@@ -1,84 +1,107 @@
-# 🛡️ Bot de Hacking Ético para Telegram
+Bot de Herramientas Hackers para Telegram
+Bot de Telegram multifunción orientado a hacking ético, automatización y utilidades técnicas, desarrollado en Python con python-telegram-bot y distribución modular. Permite a usuarios (y administradores) acceder fácilmente a herramientas básicas y premium, gestionar créditos/tareas, generar tarjetas válidas por Luhn y administrar comunidades o grupos.
 
-Bot avanzado de Telegram para hacking ético y análisis de seguridad, desarrollado por Alvaro Manzo.
+Características Principales
+Menú interactivo (InlineKeyboard) y navegación paginada de herramientas.
 
-## ⚠️ Aviso Legal
+Sistema de créditos y keys VIP para herramientas premium.
 
-Esta herramienta está diseñada exclusivamente para propósitos educativos y pruebas de seguridad autorizadas. Cualquier uso malicioso está prohibido y el usuario asume toda la responsabilidad de sus acciones.
+Generador de tarjetas Luhn (con BIN/máscara y fechas).
 
-## 🚀 Características
+Panel administrativo: creación de keys, stats, backups automáticos, limpieza de logs y exportación.
 
-- **Herramientas de Reconocimiento**
-  - Escaneo de Puertos
-  - Enumeración DNS
-  - Búsqueda de Subdominios
-  - Análisis SSL/TLS
-  - Consulta WHOIS
-  - Escaneo de Directorios
-  - Detección de Tecnologías
-  - IP Reversa
+Sistema de logros, niveles y auditoría de usos.
 
-- **Análisis de Seguridad**
-  - Búsqueda de CVEs
-  - Google Dorking Automático
-  - Escaneo de Vulnerabilidades
-  - Detección de Tecnologías Web
-  - Análisis de Headers HTTP
+Automantenimiento y backups configurables.
 
-- **Características Avanzadas**
-  - Sistema de Créditos
-  - Planes Premium
-  - Tareas Diarias
-  - Sistema de Logros
-  - Ranking de Usuarios
-  - Panel de Administrador
+Respuestas seguras (MarkdownV2 y HTML correctamente escapado).
 
-## 💻 Instalación
+Gestión robusta de errores y notificación directa al owner.
 
-```bash
-# Clonar repositorio
-git clone https://github.com/alvaromanzo/hacking-tools-bot
+Soporte grupal, registro y ajustes para grupos.
 
-# Instalar dependencias
-pip install -r requirements.txt
+Multiidioma listo para español y fácil de internacionalizar.
 
-# Configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus tokens
-```
+Diseñado para despliegue rápido en entornos multiusuario.
 
-## 🔧 Configuración
+Instalación
+1. Prerrequisitos
+Python 3.10+ recomendado.
 
-1. Obtener token de bot en [@BotFather](https://t.me/BotFather)
-2. Configurar tu ID de Telegram como OWNER_ID
-3. Configurar API keys adicionales si se necesitan
+Crea un bot con @BotFather y consigue el token.
 
-## 🛠️ Uso
+Instala requirements:
 
-```bash
+bash
+pip install python-telegram-bot matplotlib filelock requests
+2. Clona y configura
+bash
+git clone https://github.com/tuusuario/telegram-hacker-tools-bot.git
+cd telegram-hacker-tools-bot
+Copia .env.example a .env y pon tus datos principales:
+
+text
+TELEGRAM_TOKEN=xxxxxxxxx:AA...
+OWNER_ID=123456789
+OWNER_USERNAME=mitusuario
+3. Ejecuta el bot
+bash
 python main.py
-```
+# O si usas procesos:
+python3 main.py
+El bot iniciará y mostrará el menú principal.
 
-### Comandos Disponibles
-- `/start` - Inicia el bot
-- `/key <cantidad>` - (Admin) Genera keys de créditos
-- `/redeem` - Canjea créditos
-- `/daily` - Muestra tareas diarias
-- `/top` - Ver ranking
-- `/debug` - (Admin) Muestra estadísticas detalladas
+Uso rápido
+Comando /start: Muestra el menú y tus créditos.
 
-## 📚 Requisitos
+Comando /gen BINxxxx/06/28: Genera tarjetas válidas para el BIN dado y fecha.
 
-- Python 3.7+
-- nmap
-- Paquetes Python en requirements.txt
+Comando /help: Lista de comandos clave y explicación de herramientas.
 
-## 👤 Autor
+Panel de admin: Solo para OWNER (definido en ENV).
 
-**Alvaro Manzo**
-- GitHub: [@alvaromanzo](https://github.com/Alvaro-Manzo)
-- Telegram: [@alvarito_y](https://t.me/alvarito_y)
+Comandos destacados
+Comando	Descripción
+/start	Inicia e interactúa con el menú principal
+/help	Muestra ayuda completa
+/gen	Genera tarjetas válidas por BIN/máscara, ejemplo: /gen 457456xxxxxxx/07/26
+/profile	Tu perfil y estadísticas
+/redeem	Canjea una key premium
+/top	Ranking de usuarios
+/debug	(OWNER) Resumen de usuarios, usages y top herramientas
+/broadcast	(OWNER) Mensaje masivo
+/report	(OWNER) Genera gráfico de uso diario
+/addgroup	Registra el grupo en la base de datos
+Estructura del código
+main.py: Contiene toda la lógica de comandos, handlers, utilidades, generación Luhn, menús y backup.
 
-## 📝 Licencia
+Base de datos: Usando archivo db.json, seguro por filelock. Soporta backup y limpieza automática.
 
-Licencia MIT - ver archivo [LICENSE](LICENSE)
+Extensiones: Puedes agregar nuevas herramientas o categorías editando la constante TOOL_CATEGORIES.
+
+Consideraciones de seguridad
+Uso únicamente ético y educativo. Cada herramienta incluye nota de advertencia.
+
+El OWNER recibe reporte de errores y accesos críticos en tiempo real.
+
+Las operaciones críticas de la base usan filelock para evitar corrupción en modo multiusuario.
+
+Protege tu token y la base; no compartas ni subas estos datos a repositorios públicos.
+
+Personalización y extensión
+Para agregar herramientas nuevas, edita la constante TOOL_CATEGORIES y añade el handler correspondiente.
+
+Puedes migrar la base de datos de JSON a SQLite para despliegues mayores.
+
+El sistema está preparado para nuevas traducciones y soporte multiidioma.
+
+Créditos
+Bot desarrollado por Alvaro Manzo.
+Framework: python-telegram-bot.
+Inspirado en proyectos de ethical hacking y automatización.
+
+Licencia
+Uso educativo, ético y con fines de ciberseguridad controlada.
+Consulta el archivo LICENSE para términos completos.
+
+¿Dudas, propuestas, bugs? Escribe al owner vía Telegram o abre un issue en el repositorio.
